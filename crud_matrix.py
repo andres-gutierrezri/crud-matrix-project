@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python3
 """Generador automático de matriz CRUD con salidas CSV, Markdown y Excel."""
 
@@ -16,12 +15,13 @@ def build_matrix(cursor, database):
            FROM information_schema.tables
            WHERE table_schema = %s
            ORDER BY table_name;""",
-        (database,))
+        (database,),
+    )
     tables = [row[0] for row in cursor.fetchall()]
     data = {
         "Tabla": tables,
         "Create": ["X"] * len(tables),
-        "Read":   ["X"] * len(tables),
+        "Read": ["X"] * len(tables),
         "Update": ["X"] * len(tables),
         "Delete": ["X"] * len(tables),
     }
@@ -30,14 +30,18 @@ def build_matrix(cursor, database):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Genera una matriz CRUD y la exporta en CSV, Markdown y Excel.")
+        description="Genera una matriz CRUD y la exporta en CSV, Markdown y Excel."
+    )
     parser.add_argument("--host", default="localhost")
     parser.add_argument("--port", type=int, default=3306)
     parser.add_argument("--user", required=True)
     parser.add_argument("--password", required=True)
     parser.add_argument("--database", required=True)
-    parser.add_argument("--output", default="matriz_crud.csv",
-                        help="Ruta del archivo CSV de salida (por defecto matriz_crud.csv)")
+    parser.add_argument(
+        "--output",
+        default="matriz_crud.csv",
+        help="Ruta del archivo CSV de salida (por defecto matriz_crud.csv)",
+    )
     args = parser.parse_args()
 
     try:
@@ -46,7 +50,8 @@ def main():
             port=args.port,
             user=args.user,
             password=args.password,
-            database=args.database)
+            database=args.database,
+        )
     except mysql.connector.Error as err:
         print(f"[ERROR] Conexión fallida: {err}")
         sys.exit(1)
@@ -64,10 +69,7 @@ def main():
     df.to_markdown(md_path, index=False)
     df.to_excel(xlsx_path, index=False, engine="openpyxl")
 
-    print(f"Matriz CRUD generada:
-  - {csv_path}
-  - {md_path}
-  - {xlsx_path}")
+    print(f"Matriz CRUD generada: {csv_path} {md_path} {xlsx_path}")
 
     cnx.close()
 
