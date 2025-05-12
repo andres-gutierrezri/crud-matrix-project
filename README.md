@@ -19,11 +19,13 @@ El script se conecta a MySQL utilizando `mysql-connector-python`, construye la t
 ## Instalación
 
 ```bash
+# Instalar entorno virtual de Python
 python -m venv .venv
 # Windows
 .\.venv\Scripts\activate
 # Linux
 source .venv/bin/activate
+# Instalar dependencias
 pip install -r requirements.txt
 ```
 
