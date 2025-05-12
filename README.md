@@ -20,18 +20,17 @@ El script se conecta a MySQL utilizando `mysql-connector-python`, construye la t
 
 ```bash
 python -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
+# Windows
+venv\Scripts\activate
+# Linux
+source venv/bin/activate
 pip install -r requirements.txt
 ```
 
 ## Uso básico
 
 ```bash
-python crud_matrix.py \
-       --host localhost --port 3306 \
-       --user root --password 'clave' \
-       --database ejemplo \
-       --output matriz_crud.csv
+python crud_matrix.py --host localhost --port 3306 --user root --password 'clave' --database 'database_name' --output matriz_crud.csv
 ```
 
 > Si omite `--output`, el nombre por defecto es **matriz_crud.csv**.  
