@@ -35,7 +35,7 @@ def main():
     parser.add_argument("--host", default="localhost")
     parser.add_argument("--port", type=int, default=3306)
     parser.add_argument("--user", required=True)
-    parser.add_argument("--password", required=True)
+    parser.add_argument("--password", required=True) # NOTA ACLARATORIA: Si la Base de Datos NO tiene contraseña cambiar required=True por default="" | parser.add_argument("--password", default="")
     parser.add_argument("--database", required=True)
     parser.add_argument(
         "--output",
