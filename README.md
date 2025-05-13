@@ -56,6 +56,12 @@ git push -u origin main
 
 Para GitLab sustituya la URL de *remote*.
 
+## Mensajes de Commit Recomendados
+
+Para mantener un historial de commits claro y conciso, se recomiendan los siguientes formatos de mensaje:
+
+*   **feat**: Nueva característica
+
 ---
 
 © 2025 · Licencia MIT
