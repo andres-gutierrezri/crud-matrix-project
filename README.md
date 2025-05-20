@@ -18,6 +18,17 @@ El script se conecta a MySQL utilizando `mysql-connector-python`, construye la t
 
 ## Instalación
 
+# Habilitar la Ejecución de Scripts en PowerShell
+```powershell
+# Directiva de ejecución para el usuario actual
+Set-ExecutionPolicy -Scope CurrentUser Unrestricted -Force
+
+# Comprobar la directiva de ejecución
+# Debe mostrar Unrestricted
+Get-ExecutionPolicy -List
+```
+
+# Instalar dependencias de Python
 ```bash
 # Instalar entorno virtual de Python
 python -m venv .venv
